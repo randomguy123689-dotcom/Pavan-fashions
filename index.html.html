@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pavan Fashions — Women's Traditional & Ethnic Catalogue</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-dim: #8B6E2E;
+    --dark: #0B0E1F;
+    --dark2: #0f1428;
+    --dark3: #131830;
+    --cream: #F5EDD8;
+    --cream2: #EDE0C4;
+    --text: #D4B896;
+    --text-dim: #8A7456;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0B0E1F;
+    color: var(--cream);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Navy blue + gold ornamental background like Animal poster */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 50% 50%, rgba(30,45,110,0.55) 0%, transparent 70%),
+      radial-gradient(ellipse at 20% 20%, rgba(20,30,80,0.4) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(20,30,80,0.4) 0%, transparent 50%),
+      linear-gradient(135deg, #070a18 0%, #0d1230 40%, #111840 60%, #070a18 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Ornamental SVG mandala pattern overlay */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'%3E%3Cg opacity='0.07' stroke='%23C9A84C' fill='none' stroke-width='0.8'%3E%3Ccircle cx='300' cy='300' r='280'/%3E%3Ccircle cx='300' cy='300' r='240'/%3E%3Ccircle cx='300' cy='300' r='200'/%3E%3Ccircle cx='300' cy='300' r='160'/%3E%3Ccircle cx='300' cy='300' r='120'/%3E%3Ccircle cx='300' cy='300' r='80'/%3E%3Cline x1='20' y1='300' x2='580' y2='300'/%3E%3Cline x1='300' y1='20' x2='300' y2='580'/%3E%3Cline x1='102' y1='102' x2='498' y2='498'/%3E%3Cline x1='498' y1='102' x2='102' y2='498'/%3E%3Cpath d='M300 60 Q340 180 300 300 Q260 180 300 60Z'/%3E%3Cpath d='M300 540 Q340 420 300 300 Q260 420 300 540Z'/%3E%3Cpath d='M60 300 Q180 340 300 300 Q180 260 60 300Z'/%3E%3Cpath d='M540 300 Q420 340 300 300 Q420 260 540 300Z'/%3E%3Cpath d='M140 140 Q260 220 300 300 Q220 260 140 140Z'/%3E%3Cpath d='M460 140 Q340 220 300 300 Q380 260 460 140Z'/%3E%3Cpath d='M140 460 Q260 380 300 300 Q220 340 140 460Z'/%3E%3Cpath d='M460 460 Q340 380 300 300 Q380 340 460 460Z'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 600px 600px;
+    background-position: center;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page { position: relative; z-index: 1; }
+
+  /* ─── HERO ─── */
+  .hero {
+    text-align: center;
+    padding: 60px 24px 40px;
+    position: relative;
+  }
+
+  .hero-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .hero-ornament .line {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold));
+  }
+  .hero-ornament .line.right {
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+
+  .hero-ornament .diamond {
+    width: 8px; height: 8px;
+    background: var(--gold);
+    transform: rotate(45deg);
+  }
+
+  .shop-name {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(32px, 8vw, 58px);
+    font-weight: 600;
+    color: var(--gold-light);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .shop-since {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(14px, 3.5vw, 20px);
+    color: var(--text-dim);
+    letter-spacing: 0.2em;
+    margin-bottom: 6px;
+  }
+
+  .shop-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(13px, 3vw, 16px);
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+  }
+
+  .hero-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 32px auto 0;
+    max-width: 400px;
+  }
+
+  .hero-divider span {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-dim));
+  }
+  .hero-divider span.r {
+    background: linear-gradient(90deg, var(--gold-dim), transparent);
+  }
+  .hero-divider .lotus {
+    color: var(--gold);
+    font-size: 18px;
+  }
+
+  /* ─── SECTION HEADER ─── */
+  .section-header {
+    text-align: center;
+    padding: 48px 24px 32px;
+  }
+
+  .section-header .label {
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 10px;
+  }
+
+  .section-header h2 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(20px, 5vw, 30px);
+    font-weight: 400;
+    color: var(--gold-light);
+    letter-spacing: 0.1em;
+  }
+
+  /* ─── CATALOGUE GRID ─── */
+  .catalogue {
+    padding: 0 20px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+  }
+
+  .card {
+    background: #0d1228;
+    border: 1px solid rgba(201,168,76,0.22);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .card:hover {
+    border-color: rgba(201,168,76,0.45);
+    transform: translateY(-3px);
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .card:hover::before { opacity: 1; }
+
+  .card-image {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--dark3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .card:hover .card-image img {
+    transform: scale(1.05);
+  }
+
+  .card-image svg {
+    width: 70%;
+    height: 70%;
+    opacity: 0.55;
+  }
+
+  .card-image .img-label {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+  }
+
+  /* Category colour tag */
+  .card-tag {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(13,10,6,0.85);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 3px 10px;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .card-body {
+    padding: 20px 20px 22px;
+  }
+
+  .card-name {
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--cream);
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+  }
+
+  .card-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 14px;
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .card-price {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .price-label {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .price-value {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    color: var(--gold-light);
+    letter-spacing: 0.05em;
+  }
+
+  .price-note {
+    font-size: 9px;
+    color: var(--text-dim);
+    margin-top: 2px;
+    letter-spacing: 0.1em;
+  }
+
+  .card-days {
+    text-align: right;
+  }
+
+  .days-label {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .days-value {
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    color: var(--text);
+  }
+
+  /* ─── ICON ILLUSTRATIONS ─── */
+  .icon-saree path, .icon-saree rect, .icon-saree ellipse { stroke: var(--gold); fill: none; stroke-width: 1.2; }
+  .icon-suit path, .icon-suit rect { stroke: var(--gold); fill: none; stroke-width: 1.2; }
+  .icon-blouse path { stroke: var(--gold); fill: none; stroke-width: 1.2; }
+  .icon-lehenga path, .icon-lehenga ellipse { stroke: var(--gold); fill: none; stroke-width: 1.2; }
+  .icon-kurti path { stroke: var(--gold); fill: none; stroke-width: 1.2; }
+  .icon-churidar path { stroke: var(--gold); fill: none; stroke-width: 1.2; }
+
+  /* ─── NOTICE BAND ─── */
+  .notice {
+    background: var(--dark3);
+    border-top: 1px solid rgba(201,168,76,0.12);
+    border-bottom: 1px solid rgba(201,168,76,0.12);
+    padding: 20px 24px;
+    text-align: center;
+    margin: 0 0 48px;
+  }
+
+  .notice p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    line-height: 1.7;
+  }
+
+  /* ─── CONTACT ─── */
+  .contact {
+    max-width: 600px;
+    margin: 0 auto 60px;
+    padding: 0 24px;
+    text-align: center;
+  }
+
+  .contact-title {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    margin-bottom: 24px;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .contact-item {
+    background: var(--dark2);
+    border: 1px solid rgba(201,168,76,0.12);
+    padding: 16px;
+    text-align: center;
+  }
+
+  .contact-item .ci-label {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .contact-item .ci-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: var(--cream);
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    border-top: 1px solid rgba(201,168,76,0.12);
+    padding: 28px 24px;
+    text-align: center;
+  }
+
+  .footer p {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+
+  /* ─── FADE IN ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero       { animation: fadeUp 0.8s ease both; }
+  .notice     { animation: fadeUp 0.8s 0.2s ease both; }
+  .catalogue .card:nth-child(1) { animation: fadeUp 0.6s 0.3s ease both; }
+  .catalogue .card:nth-child(2) { animation: fadeUp 0.6s 0.4s ease both; }
+  .catalogue .card:nth-child(3) { animation: fadeUp 0.6s 0.5s ease both; }
+  .catalogue .card:nth-child(4) { animation: fadeUp 0.6s 0.6s ease both; }
+  .catalogue .card:nth-child(5) { animation: fadeUp 0.6s 0.7s ease both; }
+  .catalogue .card:nth-child(6) { animation: fadeUp 0.6s 0.8s ease both; }
+
+  @media (max-width: 480px) {
+    .catalogue { grid-template-columns: 1fr; gap: 18px; padding: 0 16px 48px; }
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-ornament">
+      <div class="line"></div>
+      <div class="diamond"></div>
+      <div class="line right"></div>
+    </div>
+    <div class="shop-name">Pavan Fashions</div>
+    <div class="shop-since">Est. 2000 &nbsp;·&nbsp; Proddatur</div>
+    <div class="shop-tagline">Women's Traditional &amp; Ethnic Wear</div>
+    <div class="hero-divider">
+      <span></span>
+      <span class="lotus">✦</span>
+      <span class="r"></span>
+    </div>
+  </header>
+
+  <!-- NOTICE -->
+  <div class="notice">
+    <p>All garments are custom-stitched to your measurements &nbsp;·&nbsp; Fabric selection available in-store<br>
+    Prices are for stitching only &nbsp;·&nbsp; Fabric cost billed separately</p>
+  </div>
+
+  <!-- CATALOGUE -->
+  <div class="section-header">
+    <div class="label">Our Services</div>
+    <h2>Stitching Catalogue &amp; Pricing</h2>
+  </div>
+
+  <div class="catalogue">
+
+    <!-- 1. Saree Blouse -->
+    <div class="card">
+      <div class="card-image">
+        <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+          <defs>
+            <linearGradient id="bg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a0a2e"/><stop offset="100%" stop-color="#2d1045"/></linearGradient>
+            <linearGradient id="blouse1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#c0392b"/><stop offset="100%" stop-color="#922b21"/></linearGradient>
+            <linearGradient id="gold1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#f9ca24"/><stop offset="100%" stop-color="#C9A84C"/></linearGradient>
+          </defs>
+          <rect width="300" height="400" fill="url(#bg1)"/>
+          <!-- fabric texture dots -->
+          <circle cx="50" cy="50" r="1" fill="#C9A84C" opacity="0.15"/><circle cx="100" cy="80" r="1" fill="#C9A84C" opacity="0.15"/><circle cx="200" cy="40" r="1" fill="#C9A84C" opacity="0.15"/><circle cx="250" cy="90" r="1" fill="#C9A84C" opacity="0.15"/>
+          <!-- blouse body -->
+          <path d="M90 120 Q150 95 210 120 L225 185 Q150 165 75 185 Z" fill="url(#blouse1)" stroke="#f9ca24" stroke-width="1.5"/>
+          <!-- neckline detail -->
+          <path d="M115 120 Q150 108 185 120 Q170 138 150 142 Q130 138 115 120Z" fill="#7b241c" stroke="#f9ca24" stroke-width="1"/>
+          <!-- sleeves -->
+          <path d="M90 120 Q65 128 55 160 Q70 168 85 158 Q88 140 95 132Z" fill="url(#blouse1)" stroke="#f9ca24" stroke-width="1.2"/>
+          <path d="M210 120 Q235 128 245 160 Q230 168 215 158 Q212 140 205 132Z" fill="url(#blouse1)" stroke="#f9ca24" stroke-width="1.2"/>
+          <!-- gold border at bottom -->
+          <path d="M75 185 Q150 198 225 185 L228 195 Q150 210 72 195Z" fill="url(#gold1)" opacity="0.85"/>
+          <!-- embroidery dots on blouse -->
+          <circle cx="130" cy="155" r="3" fill="#f9ca24" opacity="0.7"/><circle cx="150" cy="160" r="3" fill="#f9ca24" opacity="0.7"/><circle cx="170" cy="155" r="3" fill="#f9ca24" opacity="0.7"/>
+          <circle cx="140" cy="148" r="2" fill="#f9ca24" opacity="0.5"/><circle cx="160" cy="148" r="2" fill="#f9ca24" opacity="0.5"/>
+          <!-- gold border top -->
+          <path d="M90 120 Q150 106 210 120" stroke="url(#gold1)" stroke-width="2" fill="none"/>
+          <!-- label -->
+          <text x="150" y="360" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#C9A84C" letter-spacing="4">BLOUSE</text>
+          <line x1="80" y1="352" x2="118" y2="352" stroke="#C9A84C" stroke-width="0.8" opacity="0.5"/>
+          <line x1="182" y1="352" x2="220" y2="352" stroke="#C9A84C" stroke-width="0.8" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="card-tag">Saree</div>
+      <div class="card-body">
+        <div class="card-name">Saree Blouse</div>
+        <div class="card-desc">Plain, princess-cut, back-neck design, sleeves included. All fabric types.</div>
+        <div class="card-footer">
+          <div class="card-price">
+            <div class="price-label">Starting from</div>
+            <div class="price-value">₹250</div>
+            <div class="price-note">Designer from ₹450</div>
+          </div>
+          <div class="card-days">
+            <div class="days-label">Delivery</div>
+            <div class="days-value">3–5 days</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Lehenga -->
+    <div class="card">
+      <div class="card-image">
+        <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+          <defs>
+            <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0a1a2e"/><stop offset="100%" stop-color="#0d2240"/></linearGradient>
+            <linearGradient id="choli" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#b7230d"/><stop offset="100%" stop-color="#8e1b0a"/></linearGradient>
+            <linearGradient id="skirt" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c0392b"/><stop offset="50%" stop-color="#e74c3c"/><stop offset="100%" stop-color="#a93226"/></linearGradient>
+            <linearGradient id="goldL" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#f9ca24"/><stop offset="100%" stop-color="#C9A84C"/></linearGradient>
+          </defs>
+          <rect width="300" height="400" fill="url(#bg2)"/>
+          <!-- choli (top) -->
+          <path d="M105 55 Q150 40 195 55 L200 100 Q150 88 100 100Z" fill="url(#choli)" stroke="#f9ca24" stroke-width="1.5"/>
+          <!-- choli neckline -->
+          <path d="M120 55 Q150 45 180 55 Q165 70 150 74 Q135 70 120 55Z" fill="#7b241c" stroke="#f9ca24" stroke-width="1"/>
+          <!-- choli sleeves -->
+          <path d="M105 55 Q82 62 72 90 L88 96 Q92 72 102 65Z" fill="url(#choli)" stroke="#f9ca24" stroke-width="1"/>
+          <path d="M195 55 Q218 62 228 90 L212 96 Q208 72 198 65Z" fill="url(#choli)" stroke="#f9ca24" stroke-width="1"/>
+          <!-- gold waistband -->
+          <rect x="98" y="99" width="104" height="10" rx="2" fill="url(#goldL)"/>
+          <!-- lehenga skirt - flared -->
+          <path d="M100 109 Q70 160 40 310 Q80 330 150 335 Q220 330 260 310 Q230 160 200 109Z" fill="url(#skirt)" stroke="#f9ca24" stroke-width="1"/>
+          <!-- skirt tier lines (embroidery) -->
+          <path d="M55 190 Q150 205 245 190" stroke="#f9ca24" stroke-width="1.2" fill="none" opacity="0.7"/>
+          <path d="M46 240 Q150 258 254 240" stroke="#f9ca24" stroke-width="1.2" fill="none" opacity="0.7"/>
+          <path d="M40 290 Q150 308 260 290" stroke="#f9ca24" stroke-width="1.5" fill="none" opacity="0.8"/>
+          <!-- hem gold border -->
+          <path d="M40 310 Q150 335 260 310 Q258 322 255 328 Q150 348 45 328 Q42 322 40 310Z" fill="url(#goldL)" opacity="0.9"/>
+          <!-- floral motifs on skirt -->
+          <circle cx="110" cy="220" r="6" fill="#f9ca24" opacity="0.4"/>
+          <circle cx="150" cy="250" r="6" fill="#f9ca24" opacity="0.4"/>
+          <circle cx="190" cy="220" r="6" fill="#f9ca24" opacity="0.4"/>
+          <circle cx="130" cy="270" r="4" fill="#f9ca24" opacity="0.3"/>
+          <circle cx="170" cy="270" r="4" fill="#f9ca24" opacity="0.3"/>
+          <!-- dupatta hint -->
+          <path d="M195 55 Q230 30 270 20 Q275 25 265 35 Q235 42 205 68" fill="none" stroke="#f9ca24" stroke-width="1" opacity="0.5" stroke-dasharray="4 3"/>
+          <!-- label -->
+          <text x="150" y="375" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#C9A84C" letter-spacing="4">LEHENGA</text>
+        </svg>
+      </div>
+      <div class="card-tag">Bridal</div>
+      <div class="card-body">
+        <div class="card-name">Lehenga &amp; Choli</div>
+        <div class="card-desc">Full skirt with blouse and dupatta stitching. Embroidery work extra.</div>
+        <div class="card-footer">
+          <div class="card-price">
+            <div class="price-label">Starting from</div>
+            <div class="price-value">₹1,200</div>
+            <div class="price-note">Bridal from ₹2,500</div>
+          </div>
+          <div class="card-days">
+            <div class="days-label">Delivery</div>
+            <div class="days-value">7–10 days</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Kurti -->
+    <div class="card">
+      <div class="card-image">
+        <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+          <defs>
+            <linearGradient id="bg3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0d1f0a"/><stop offset="100%" stop-color="#122a0e"/></linearGradient>
+            <linearGradient id="kurti" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1e8449"/><stop offset="100%" stop-color="#196f3d"/></linearGradient>
+            <linearGradient id="goldK" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#f9ca24"/><stop offset="100%" stop-color="#C9A84C"/></linearGradient>
+          </defs>
+          <rect width="300" height="400" fill="url(#bg3)"/>
+          <!-- kurti body -->
+          <path d="M88 40 Q150 22 212 40 L228 290 Q150 302 72 290Z" fill="url(#kurti)" stroke="#f9ca24" stroke-width="1.2"/>
+          <!-- neckline - V neck -->
+          <path d="M118 40 Q150 30 182 40 L150 68Z" fill="#145a32" stroke="#f9ca24" stroke-width="1"/>
+          <!-- sleeves -->
+          <path d="M88 40 Q62 52 50 110 Q62 118 76 112 Q80 70 92 55Z" fill="url(#kurti)" stroke="#f9ca24" stroke-width="1"/>
+          <path d="M212 40 Q238 52 250 110 Q238 118 224 112 Q220 70 208 55Z" fill="url(#kurti)" stroke="#f9ca24" stroke-width="1"/>
+          <!-- sleeve gold cuffs -->
+          <path d="M50 110 Q56 118 76 112 L78 120 Q58 126 48 118Z" fill="url(#goldK)" opacity="0.85"/>
+          <path d="M250 110 Q244 118 224 112 L222 120 Q242 126 252 118Z" fill="url(#goldK)" opacity="0.85"/>
+          <!-- center placket -->
+          <line x1="150" y1="68" x2="150" y2="290" stroke="#f9ca24" stroke-width="1" opacity="0.5"/>
+          <!-- small buttons -->
+          <circle cx="150" cy="90" r="3" fill="#f9ca24" opacity="0.6"/>
+          <circle cx="150" cy="108" r="3" fill="#f9ca24" opacity="0.6"/>
+          <circle cx="150" cy="126" r="3" fill="#f9ca24" opacity="0.6"/>
+          <!-- chest print/block motif -->
+          <rect x="108" y="80" width="35" height="35" rx="4" fill="#f9ca24" opacity="0.08"/>
+          <rect x="157" y="80" width="35" height="35" rx="4" fill="#f9ca24" opacity="0.08"/>
+          <!-- waist seam -->
+          <path d="M78 170 Q150 180 222 170" stroke="#f9ca24" stroke-width="1" fill="none" opacity="0.5"/>
+          <!-- hem border -->
+          <path d="M72 290 Q150 302 228 290 L230 302 Q150 315 70 302Z" fill="url(#goldK)" opacity="0.85"/>
+          <!-- hem scallop detail -->
+          <path d="M70 302 Q90 308 110 302 Q130 308 150 302 Q170 308 190 302 Q210 308 230 302" stroke="#f9ca24" stroke-width="1.5" fill="none"/>
+          <!-- label -->
+          <text x="150" y="358" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#C9A84C" letter-spacing="4">KURTI</text>
+        </svg>
+      </div>
+      <div class="card-tag">Casual</div>
+      <div class="card-body">
+        <div class="card-name">Kurti / Kurta</div>
+        <div class="card-desc">Straight, A-line, anarkali styles. Collar, neck &amp; sleeve designs on request.</div>
+        <div class="card-footer">
+          <div class="card-price">
+            <div class="price-label">Starting from</div>
+            <div class="price-value">₹350</div>
+            <div class="price-note">Anarkali from ₹600</div>
+          </div>
+          <div class="card-days">
+            <div class="days-label">Delivery</div>
+            <div class="days-value">4–6 days</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Churidar / Salwar -->
+    <div class="card">
+      <div class="card-image">
+        <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+          <defs>
+            <linearGradient id="bg4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a1020"/><stop offset="100%" stop-color="#230f35"/></linearGradient>
+            <linearGradient id="top4" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#6c3483"/><stop offset="100%" stop-color="#512e81"/></linearGradient>
+            <linearGradient id="bottom4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7d3c98"/><stop offset="100%" stop-color="#4a235a"/></linearGradient>
+            <linearGradient id="goldC" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#f9ca24"/><stop offset="100%" stop-color="#C9A84C"/></linearGradient>
+          </defs>
+          <rect width="300" height="400" fill="url(#bg4)"/>
+          <!-- kameez top -->
+          <path d="M90 28 Q150 12 210 28 L218 170 Q150 182 82 170Z" fill="url(#top4)" stroke="#f9ca24" stroke-width="1.2"/>
+          <!-- neckline -->
+          <path d="M116 28 Q150 18 184 28 Q168 46 150 50 Q132 46 116 28Z" fill="#4a235a" stroke="#f9ca24" stroke-width="1"/>
+          <!-- sleeves -->
+          <path d="M90 28 Q65 38 54 85 Q66 92 80 86 Q84 55 94 42Z" fill="url(#top4)" stroke="#f9ca24" stroke-width="1"/>
+          <path d="M210 28 Q235 38 246 85 Q234 92 220 86 Q216 55 206 42Z" fill="url(#top4)" stroke="#f9ca24" stroke-width="1"/>
+          <!-- gold border chest -->
+          <path d="M116 28 Q150 20 184 28" stroke="url(#goldC)" stroke-width="2" fill="none"/>
+          <!-- waist seam with gold -->
+          <path d="M82 170 Q150 182 218 170 L220 182 Q150 196 80 182Z" fill="url(#goldC)" opacity="0.8"/>
+          <!-- churidar legs -->
+          <path d="M80 182 L72 340 L105 342 L150 350 L195 342 L228 340 L220 182Z" fill="url(#bottom4)" stroke="#f9ca24" stroke-width="0.8"/>
+          <!-- churidar wrinkle lines -->
+          <path d="M105 260 Q110 270 108 290 Q106 310 104 330" stroke="#f9ca24" stroke-width="0.8" fill="none" opacity="0.4"/>
+          <path d="M195 260 Q190 270 192 290 Q194 310 196 330" stroke="#f9ca24" stroke-width="0.8" fill="none" opacity="0.4"/>
+          <path d="M120 280 Q125 295 122 315" stroke="#f9ca24" stroke-width="0.6" fill="none" opacity="0.3"/>
+          <path d="M180 280 Q175 295 178 315" stroke="#f9ca24" stroke-width="0.6" fill="none" opacity="0.3"/>
+          <!-- ankle gold cuffs -->
+          <ellipse cx="105" cy="342" rx="18" ry="5" fill="url(#goldC)" opacity="0.8"/>
+          <ellipse cx="195" cy="342" rx="18" ry="5" fill="url(#goldC)" opacity="0.8"/>
+          <!-- embroidery on top -->
+          <circle cx="130" cy="100" r="4" fill="#f9ca24" opacity="0.3"/>
+          <circle cx="150" cy="95" r="4" fill="#f9ca24" opacity="0.3"/>
+          <circle cx="170" cy="100" r="4" fill="#f9ca24" opacity="0.3"/>
+          <!-- label -->
+          <text x="150" y="378" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#C9A84C" letter-spacing="3">CHURIDAR</text>
+        </svg>
+      </div>
+      <div class="card-tag">Ethnic</div>
+      <div class="card-body">
+        <div class="card-name">Churidar / Salwar</div>
+        <div class="card-desc">Churidar, patiala, and straight-cut salwar. Matching dupatta stitching available.</div>
+        <div class="card-footer">
+          <div class="card-price">
+            <div class="price-label">Starting from</div>
+            <div class="price-value">₹300</div>
+            <div class="price-note">With dupatta ₹450</div>
+          </div>
+          <div class="card-days">
+            <div class="days-label">Delivery</div>
+            <div class="days-value">3–5 days</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Pattu Saree Blouse -->
+    <div class="card">
+      <div class="card-image">
+        <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+          <defs>
+            <linearGradient id="bg5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a0e00"/><stop offset="100%" stop-color="#261500"/></linearGradient>
+            <linearGradient id="silk" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#6e2c00"/><stop offset="50%" stop-color="#922b21"/><stop offset="100%" stop-color="#7b241c"/></linearGradient>
+            <linearGradient id="goldS" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#f9ca24"/><stop offset="50%" stop-color="#ffd700"/><stop offset="100%" stop-color="#C9A84C"/></linearGradient>
+            <pattern id="zari" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
+              <rect width="12" height="12" fill="none"/>
+              <path d="M0 6 L12 6 M6 0 L6 12" stroke="#f9ca24" stroke-width="0.4" opacity="0.25"/>
+            </pattern>
+          </defs>
+          <rect width="300" height="400" fill="url(#bg5)"/>
+          <!-- zari texture on bg -->
+          <rect width="300" height="400" fill="url(#zari)"/>
+          <!-- pattu blouse body - wider, more ornate -->
+          <path d="M82 115 Q150 90 218 115 L230 195 Q150 175 70 195Z" fill="url(#silk)" stroke="#f9ca24" stroke-width="2"/>
+          <!-- heavy gold border top -->
+          <path d="M82 115 Q150 95 218 115" stroke="url(#goldS)" stroke-width="3.5" fill="none"/>
+          <!-- neckline - round traditional -->
+          <ellipse cx="150" cy="118" rx="30" ry="18" fill="#5b1414" stroke="#f9ca24" stroke-width="1.5"/>
+          <!-- sleeves - short puff style -->
+          <path d="M82 115 Q55 122 44 155 Q58 165 76 158 Q78 135 88 125Z" fill="url(#silk)" stroke="#f9ca24" stroke-width="1.5"/>
+          <path d="M218 115 Q245 122 256 155 Q242 165 224 158 Q222 135 212 125Z" fill="url(#silk)" stroke="#f9ca24" stroke-width="1.5"/>
+          <!-- sleeve gold cuffs - thick zari border -->
+          <path d="M44 155 Q58 168 76 158 L78 168 Q60 178 42 165Z" fill="url(#goldS)" opacity="0.9"/>
+          <path d="M256 155 Q242 168 224 158 L222 168 Q240 178 258 165Z" fill="url(#goldS)" opacity="0.9"/>
+          <!-- bottom heavy gold border - triple line -->
+          <path d="M70 195 Q150 212 230 195 L234 208 Q150 226 66 208Z" fill="url(#goldS)" opacity="0.9"/>
+          <path d="M66 208 Q150 226 234 208 L236 218 Q150 235 64 218Z" fill="#C9A84C" opacity="0.6"/>
+          <!-- zari embroidery pattern on blouse -->
+          <circle cx="120" cy="152" r="6" fill="none" stroke="#f9ca24" stroke-width="1" opacity="0.6"/>
+          <circle cx="120" cy="152" r="3" fill="#f9ca24" opacity="0.5"/>
+          <circle cx="150" cy="158" r="6" fill="none" stroke="#f9ca24" stroke-width="1" opacity="0.6"/>
+          <circle cx="150" cy="158" r="3" fill="#f9ca24" opacity="0.5"/>
+          <circle cx="180" cy="152" r="6" fill="none" stroke="#f9ca24" stroke-width="1" opacity="0.6"/>
+          <circle cx="180" cy="152" r="3" fill="#f9ca24" opacity="0.5"/>
+          <!-- peacock motif hint -->
+          <path d="M138 138 Q150 130 162 138 Q158 148 150 150 Q142 148 138 138Z" fill="none" stroke="#f9ca24" stroke-width="0.8" opacity="0.5"/>
+          <!-- label -->
+          <text x="150" y="310" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#C9A84C" letter-spacing="3">PATTU BLOUSE</text>
+          <text x="150" y="326" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#8B6E2E" letter-spacing="2">SILK · KANJIVARAM</text>
+        </svg>
+      </div>
+      <div class="card-tag">Silk</div>
+      <div class="card-body">
+        <div class="card-name">Pattu Saree Blouse</div>
+        <div class="card-desc">Specialised stitching for silk &amp; Kanjivaram sarees. Full lining, hook finishing.</div>
+        <div class="card-footer">
+          <div class="card-price">
+            <div class="price-label">Starting from</div>
+            <div class="price-value">₹400</div>
+            <div class="price-note">Bridal silk from ₹700</div>
+          </div>
+          <div class="card-days">
+            <div class="days-label">Delivery</div>
+            <div class="days-value">5–7 days</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Gown -->
+    <div class="card">
+      <div class="card-image">
+        <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+          <defs>
+            <linearGradient id="bg6" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#080818"/><stop offset="100%" stop-color="#0d0d28"/></linearGradient>
+            <linearGradient id="gown" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1a237e"/><stop offset="50%" stop-color="#283593"/><stop offset="100%" stop-color="#1565c0"/></linearGradient>
+            <linearGradient id="gownFlare" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1565c0"/><stop offset="100%" stop-color="#0d47a1"/></linearGradient>
+            <linearGradient id="goldG" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#f9ca24"/><stop offset="100%" stop-color="#C9A84C"/></linearGradient>
+          </defs>
+          <rect width="300" height="400" fill="url(#bg6)"/>
+          <!-- gown bodice -->
+          <path d="M108 28 Q150 15 192 28 L200 120 Q150 112 100 120Z" fill="url(#gown)" stroke="#f9ca24" stroke-width="1.2"/>
+          <!-- sweetheart neckline -->
+          <path d="M120 28 Q135 18 150 22 Q165 18 180 28 Q170 44 150 48 Q130 44 120 28Z" fill="#0d1b6b" stroke="#f9ca24" stroke-width="1"/>
+          <!-- strapless top -->
+          <path d="M108 28 Q120 22 120 28" stroke="#f9ca24" stroke-width="0.8" fill="none"/>
+          <path d="M192 28 Q180 22 180 28" stroke="#f9ca24" stroke-width="0.8" fill="none"/>
+          <!-- waist cinch + gold belt -->
+          <path d="M100 120 Q150 128 200 120 L202 132 Q150 142 98 132Z" fill="url(#goldG)" opacity="0.9"/>
+          <!-- flared skirt -->
+          <path d="M98 132 Q68 180 35 350 Q90 368 150 372 Q210 368 265 350 Q232 180 202 132Z" fill="url(#gownFlare)" stroke="#f9ca24" stroke-width="1"/>
+          <!-- skirt layers / tiers -->
+          <path d="M50 220 Q150 238 250 220" stroke="#f9ca24" stroke-width="0.8" fill="none" opacity="0.4"/>
+          <path d="M42 270 Q150 290 258 270" stroke="#f9ca24" stroke-width="0.8" fill="none" opacity="0.4"/>
+          <path d="M36 320 Q150 342 264 320" stroke="#f9ca24" stroke-width="1" fill="none" opacity="0.5"/>
+          <!-- hem gold border -->
+          <path d="M35 350 Q150 372 265 350 Q263 362 260 368 Q150 388 40 368 Q37 362 35 350Z" fill="url(#goldG)" opacity="0.85"/>
+          <!-- sequin sparkles on bodice -->
+          <circle cx="130" cy="70" r="2" fill="#f9ca24" opacity="0.7"/>
+          <circle cx="150" cy="62" r="2" fill="#f9ca24" opacity="0.7"/>
+          <circle cx="170" cy="70" r="2" fill="#f9ca24" opacity="0.7"/>
+          <circle cx="140" cy="82" r="1.5" fill="#f9ca24" opacity="0.5"/>
+          <circle cx="160" cy="82" r="1.5" fill="#f9ca24" opacity="0.5"/>
+          <circle cx="125" cy="92" r="1.5" fill="#f9ca24" opacity="0.4"/>
+          <circle cx="175" cy="92" r="1.5" fill="#f9ca24" opacity="0.4"/>
+          <!-- sparkles on skirt -->
+          <circle cx="100" cy="200" r="1.5" fill="#f9ca24" opacity="0.3"/>
+          <circle cx="180" cy="240" r="1.5" fill="#f9ca24" opacity="0.3"/>
+          <circle cx="120" cy="300" r="1.5" fill="#f9ca24" opacity="0.3"/>
+          <circle cx="200" cy="180" r="1.5" fill="#f9ca24" opacity="0.3"/>
+          <!-- label -->
+          <text x="150" y="395" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#C9A84C" letter-spacing="4">GOWN</text>
+        </svg>
+      </div>
+      <div class="card-tag">Party</div>
+      <div class="card-body">
+        <div class="card-name">Gown / Long Dress</div>
+        <div class="card-desc">Floor-length gowns, evening dresses, and party wear with custom silhouettes.</div>
+        <div class="card-footer">
+          <div class="card-price">
+            <div class="price-label">Starting from</div>
+            <div class="price-value">₹800</div>
+            <div class="price-note">Designer from ₹1,500</div>
+          </div>
+          <div class="card-days">
+            <div class="days-label">Delivery</div>
+            <div class="days-value">7–10 days</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /catalogue -->
+
+  <!-- CONTACT -->
+  <div class="contact">
+    <div class="contact-title">Visit Us</div>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="ci-label">Location</div>
+        <div class="ci-value">Proddatur, Andhra Pradesh</div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-label">Hours</div>
+        <div class="ci-value">Sun – Sat, 9 am – 9 pm</div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-label">Phone</div>
+        <div class="ci-value">83746 71808</div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-label">Alterations</div>
+        <div class="ci-value">Available · ₹80 onwards</div>
+      </div>
+    </div>
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:var(--text-dim);letter-spacing:0.08em;line-height:1.7;">
+      Measurements taken in-store &nbsp;·&nbsp; Bring your fabric, we do the rest<br>
+      Trial fitting included on all orders above ₹500
+    </p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2025 Pavan Fashions &nbsp;·&nbsp; Since 2000 &nbsp;·&nbsp; Proddatur</p>
+  </footer>
+
+</div>
+</body>
+</html>
